@@ -14,7 +14,7 @@ class MySpider(BaseSpider):
         items = []
         for titles in titles:
             item = CraigslistSampleItem()
-            item["title"] = titles.select("a/text()").extract()
+            item["title"] = titles.select("a/span/text()").extract()
             item["link"] = titles.select("a/@href").extract()
             items.append(item)
         return items
